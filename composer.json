@@ -1,23 +1,25 @@
 {
-    "name": ":vendor/:package_name",
+    "name": "ironshark/typo3-configuration-manager",
     "type": "library",
-    "description": ":package_description",
+    "description": "CLI tools for interacting with Typo3 configuration file LocalConfiguration.php. Can be used to update some serialized extension configs during deployment processes.",
     "keywords": [
-        ":vendor",
-        ":package_name"
+        "ironshark",
+        "typo3-configuration-manager"
     ],
-    "homepage": "https://github.com/:vendor/:package_name",
+    "homepage": "https://github.com/ironshark/typo3-configuration-manager",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_website",
+            "name": "Anton Pauli",
+            "email": "pauli@ironshark.de",
+            "homepage": "https://github.com/ironsharkde",
             "role": "Developer"
         }
     ],
     "require": {
-        "php" : "~5.5|~7.0"
+        "php" : "~5.5|~7.0",
+        "symfony/console": "^3.0",
+        "riimu/kit-phpencoder": "^2.1"
     },
     "require-dev": {
         "phpunit/phpunit" : "4.*",
@@ -26,17 +28,13 @@
     },
     "autoload": {
         "psr-4": {
-            ":vendor\\:package_name\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            ":vendor\\:package_name\\Test\\": "tests"
+            "IronShark\\Typo3ConfigurationManager\\": "src"
         }
     },
     "scripts": {
         "test": "phpunit"
     },
+    "bin": ["bin/typo3-configuration-manager"],
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
