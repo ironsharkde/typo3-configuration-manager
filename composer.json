@@ -31,14 +31,10 @@
             "IronShark\\Typo3ConfigurationManager\\": "src"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "ironshark\\typo3-configuration-manager\\Test\\": "tests"
-        }
-    },
     "scripts": {
         "test": "phpunit"
     },
+    "bin": ["bin/typo3-configuration-manager"],
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
