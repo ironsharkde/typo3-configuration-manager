@@ -17,11 +17,6 @@ $ composer require ironshark/typo3-configuration-manager
 
 ## Usage
 
-### List all available commands
-
-``` bash
-php vendor/bin/typo3-configuration-manager
-```
 
 ### config:list
 
@@ -62,7 +57,7 @@ php vendor/bin/typo3-configuration-manager config:list -h
 
 Replace values in configuration file
 
-#### Usage
+#### Examples
 
 Set single configuration
 
@@ -107,6 +102,14 @@ php vendor/bin/typo3-configuration-manager config:update -h
       --no-ansi                              Disable ANSI output
   -n, --no-interaction                       Do not ask any interactive question
   -v|vv|vvv, --verbose                       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+```
+
+### list
+
+List all available commands
+
+``` bash
+php vendor/bin/typo3-configuration-manager list
 ```
 
 ## Change log
