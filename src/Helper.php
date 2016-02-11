@@ -51,7 +51,7 @@ class Helper
             if ((!is_array($array) || !array_key_exists($segment, $array)) &&
                 (!$array instanceof ArrayAccess || !$array->offsetExists($segment))
             ) {
-                return value($default);
+                return static::value($default);
             }
             $array = $array[$segment];
         }
@@ -66,7 +66,7 @@ class Helper
      */
     public static function value($value)
     {
-        return $value instanceof Closure ? $value() : $value;
+        return $value instanceof Closure ? static::$value() : $value;
     }
 
 
