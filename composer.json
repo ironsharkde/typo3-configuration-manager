@@ -28,7 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ironshark\\typo3-configuration-manager\\": "src"
+            "IronShark\\Typo3ConfigurationManager\\": "src"
         }
     },
     "autoload-dev": {
