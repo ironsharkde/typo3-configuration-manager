@@ -2,15 +2,10 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
-[![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-**Note:** Replace ```Anton Pauli``` ```TUNER88``` ```https://github.com/ironsharkde``` ```pauli@ironshark.de``` ```ironshark``` ```typo3-configuration-manager``` ```CLI tools for interacting with Typo3 configuration file LocalConfiguration.php. Can be used to update some serialized extension configs during deployment processes.``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line.
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+CLI tools for interacting with Typo3 configuration file LocalConfiguration.php. Can be used to update some serialized extension configs during deployment processes.
 
 ## Install
 
@@ -22,20 +17,101 @@ $ composer require ironshark/typo3-configuration-manager
 
 ## Usage
 
-``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+### List all available commands
+
+``` bash
+php vendor/bin/typo3-configuration-manager
+```
+
+### config:list
+
+Display all configurations as flat key / value list
+
+``` bash
+php vendor/bin/typo3-configuration-manager config:list --source-file="path/to/LocalConfiguration.php"
+
+BE.IPmaskList => '*'
+BE.compressionLevel => '0'
+BE.debug => '1'
+...
+XT.extConf.sfpmedialibrary.imageCachePath => 'typo3temp/sfpmedialibrary/'
+EXT.extConf.sfpmedialibrary.imageQualityDownload => '90'
+EXT.extConf.sfpmedialibrary.imageQualityPreview => '70'
+EXT.extConf.sfpmedialibrary.complexImageAsJpegFormat => '400'
+EXT.extConf.sfpmedialibrary.thumbnailSizes => '400x300,300x300,200x200'
+EXT.extConf.sfpmedialibrary.apiUrl => 'http://test.spot.staubli.com.staubliag4.nine.ch/api/v1/'
+...
+```
+
+#### Options
+
+```
+php vendor/bin/typo3-configuration-manager config:list -h
+
+  -s, --source-file[=SOURCE-FILE]  Source config-file path [default: "/var/www/typo3conf/LocalConfiguration.php"]
+  -h, --help                       Display this help message
+  -q, --quiet                      Do not output any message
+  -V, --version                    Display this application version
+      --ansi                       Force ANSI output
+      --no-ansi                    Disable ANSI output
+  -n, --no-interaction             Do not ask any interactive question
+  -v|vv|vvv, --verbose             Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+```
+
+### config:update
+
+Replace values in configuration file
+
+#### Usage
+
+Set single configuration
+
+``` bash
+php vendor/bin/typo3-configuration-manager config:update --path="SYS.UTF8filesystem" --value="ls"
+
+Replace value at path: SYS.UTF8filesystem: null => ls
+```
+
+Set multiple configurations from *JSON* object
+
+``` bash
+php vendor/bin/typo3-configuration-manager config:update --value-json={\"SYS.UTF8filesystem\":\"test\"}
+Replace value at path: SYS.UTF8filesystem: 1 => test
+...
+```
+
+Set multiple configurations from *JSON* object using custom source and destination
+
+``` bash
+php vendor/bin/typo3-configuration-manager config:update --source-file="/var/www/typo3conf/LocalConfiguration.php" --destination-file="/var/www/typo3conf/LocalConfiguration.php.test" --value-json={\"SYS.binSetup\":\"test\"}
+
+Replace value at path: SYS.binSetup: perl=/usr/bin/perl,unzip=/usr/bin/unzip => test
+...
+```
+
+##### Options
+
+```
+php vendor/bin/typo3-configuration-manager config:update -h
+
+  -s, --source-file[=SOURCE-FILE]            Source config-file path [default: "/var/www/typo3conf/LocalConfiguration.php"]
+  -d, --destination-file[=DESTINATION-FILE]  Destination config-file path, source file will be overwritten if no destination provided
+  -f, --value-file[=VALUE-FILE]              Path to file with new values
+  -j, --value-json[=VALUE-JSON]              New values as JSON
+  -p, --path[=PATH]                          Path for single element configuration e.g EXT.extConf.sfpmedialibrary.apiUrl
+      --value[=VALUE]                        Value for single element configuration e.g https://api.tld
+  -h, --help                                 Display this help message
+  -q, --quiet                                Do not output any message
+  -V, --version                              Display this application version
+      --ansi                                 Force ANSI output
+      --no-ansi                              Disable ANSI output
+  -n, --no-interaction                       Do not ask any interactive question
+  -v|vv|vvv, --verbose                       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 ```
 
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-## Testing
-
-``` bash
-$ composer test
-```
 
 ## Contributing
 

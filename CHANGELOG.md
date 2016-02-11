@@ -4,10 +4,10 @@ All Notable changes to `typo3-configuration-manager` will be documented in this 
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## NEXT - YYYY-MM-DD
+## NEXT - 2016-02-11
 
 ### Added
-- Nothing
+- Initial package version
 
 ### Deprecated
 - Nothing
