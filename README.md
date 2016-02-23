@@ -34,7 +34,6 @@ EXT.extConf.sfpmedialibrary.imageQualityDownload => '90'
 EXT.extConf.sfpmedialibrary.imageQualityPreview => '70'
 EXT.extConf.sfpmedialibrary.complexImageAsJpegFormat => '400'
 EXT.extConf.sfpmedialibrary.thumbnailSizes => '400x300,300x300,200x200'
-EXT.extConf.sfpmedialibrary.apiUrl => 'http://test.spot.staubli.com.staubliag4.nine.ch/api/v1/'
 ...
 ```
 
